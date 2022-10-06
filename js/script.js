@@ -18,6 +18,7 @@ x calcolare il prezzo del biglietto
     sconto del 40% > 65
 */
 
+// informazini utente
 let kmUtente = parseInt(prompt('Inserisci km da percorrere'));
 let etaUtente = parseInt(prompt('Quanti anni hai?'));
 
@@ -29,20 +30,30 @@ if(isNaN(kmUtente) || isNaN(etaUtente)){
     window.location.reload();
 } 
 
-let costoBiglietto = 0.21;
-let costoViaggio =parseFloat(costoBiglietto * kmUtente).toFixed(2);
+// costo biglietto
+let costoKm = 0.21;
+let costoBiglietto =parseFloat(costoKm * kmUtente).toFixed(2);
 
-console.log(costoViaggio)
+console.log(costoBiglietto)
 
+// calcolo sconto
+let costoFinale;
 if(etaUtente < 18){
-    let costoFinale = parseFloat(costoViaggio * 0.8).toFixed(2);
+    costoFinale = parseFloat(costoBiglietto * 0.8).toFixed(2);
     console.log(costoFinale);
 } else if (etaUtente > 65){
-    let costoFinale = parseFloat(costoViaggio * 0.6).toFixed(2);
+    costoFinale = parseFloat(costoBiglietto * 0.6).toFixed(2);
     console.log(costoFinale);
 } else {
-    let costoFinale = costoViaggio;
+    costoFinale = costoBiglietto;
     console.log(costoFinale);
 }
+
+console.log(costoFinale);
+
+// inserimento in html
+document.getElementById("distanza").innerHTML = kmUtente;
+document.getElementById("eta").innerHTML = etaUtente;
+document.getElementById("prezzofinale").innerHTML = costoFinale;
 
 
